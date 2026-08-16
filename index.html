@@ -179,17 +179,18 @@
             padding-bottom: 1rem; 
         }
 
+        /* ----- 【修改核心区：一行4列】 ----- */
         .work-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(4, 1fr); /* 强制划分为4等份 */
+            gap: 1.5rem; /* 由于一行4个，卡片间距稍微调小一点会更精致 */
         }
 
         .work-item {
             position: relative;
             aspect-ratio: 16 / 9;
             background-color: var(--surface-color);
-            border-radius: 6px;
+            border-radius: 4px; /* 稍微减小一点圆角，更显硬朗的电影感 */
             overflow: hidden;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -198,8 +199,8 @@
 
         /* 卡片悬浮特效 */
         .work-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
         .video-container { position: relative; width: 100%; height: 100%; }
@@ -223,13 +224,13 @@
         }
 
         .placeholder-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 300;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .placeholder-text {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -280,13 +281,20 @@
             60% { transform: translateY(-7px) translateX(-50%); }
         }
 
-        /* 响应式适配 */
+        /* ----- 响应式适配：防止平板/手机上被挤成一条线 ----- */
+        @media (max-width: 1200px) {
+            /* 屏幕较小时（如iPad），改为一行2个 */
+            .work-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
         @media (max-width: 768px) {
             .hero-title { font-size: 2.8rem; letter-spacing: 3px; }
             .hero-subtitle { font-size: 0.8rem; }
             .nav-links { display: none; }
             .about-contact { flex-direction: column; gap: 3rem; }
             .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+            /* 手机屏幕上，改为一行1个 */
+            .work-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -302,13 +310,12 @@
 
     <section id="top" class="hero">
         <div class="hero-video-bg"></div>
-        <div class="hero-overlay"></div> <!-- 渐变遮罩 -->
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">捕捉光影的秩序</h1>
             <p class="hero-subtitle">TVC Commercial | Narrative Short | Visual Arts</p>
         </div>
         
-        <!-- 向下滚动提示动画 -->
         <div class="scroll-indicator">
             <span>Scroll</span>
             <div class="scroll-line"></div>
@@ -319,25 +326,24 @@
         <h2 class="section-title">精选案例 / Featured Works</h2>
         <div class="work-grid">
             
-            <!-- 第1个作品：B站视频 -->
-            <!-- 第1个作品：B站视频 -->
+            <!-- 第1个作品：B站视频（已修正全屏与控制栏） -->
             <div class="work-item">
                 <div class="video-container">
                     <iframe 
-                        src="//player.bilibili.com/player.html?isOutside=true&aid=116412320319364&bvid=BV1PZdbBaESW&cid=37544265921&p=1&high_quality=1&danmaku=0" 
+                        src="//player.bilibili.com/player.html?isOutside=true&aid=116412320319364&bvid=BV1PZdbBaESW&cid=37544265921&p=1&danmaku=0" 
                         scrolling="no" 
                         border="0" 
                         frameborder="no" 
                         framespacing="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
                         allowfullscreen="true" 
                         webkitallowfullscreen="true" 
-                        mozallowfullscreen="true">
+                        mozallowfullscreen="true"
+                        allow="autoplay; fullscreen; picture-in-picture">
                     </iframe>
                 </div>
             </div>
 
-            <!-- 第2个作品：待上传占位符 (原 Vimeo 替换) -->
+            <!-- 第2个作品：待上传占位符 -->
             <div class="work-item placeholder">
                 <div class="placeholder-icon">+</div>
                 <div class="placeholder-text">待上传案例</div>
