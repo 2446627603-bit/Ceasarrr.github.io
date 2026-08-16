@@ -179,18 +179,18 @@
             padding-bottom: 1rem; 
         }
 
-        /* ----- 【修改核心区：一行4列】 ----- */
+        /* ----- 【修改核心区：一行3列，共6个】 ----- */
         .work-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 强制划分为4等份 */
-            gap: 1.5rem; /* 由于一行4个，卡片间距稍微调小一点会更精致 */
+            grid-template-columns: repeat(3, 1fr); /* 强制划分为3等份 */
+            gap: 2rem; /* 恢复为2rem间距，因为卡片变大了，需要更多的呼吸感 */
         }
 
         .work-item {
             position: relative;
             aspect-ratio: 16 / 9;
             background-color: var(--surface-color);
-            border-radius: 4px; /* 稍微减小一点圆角，更显硬朗的电影感 */
+            border-radius: 4px; 
             overflow: hidden;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -224,13 +224,13 @@
         }
 
         .placeholder-icon {
-            font-size: 1.5rem;
+            font-size: 2rem; /* 配合大卡片适度放大图标 */
             font-weight: 300;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
 
         .placeholder-text {
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* 配合大卡片适度放大文字 */
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -326,7 +326,7 @@
         <h2 class="section-title">精选案例 / Featured Works</h2>
         <div class="work-grid">
             
-            <!-- 第1个作品：B站视频（已修正全屏与控制栏） -->
+            <!-- 第1个作品：B站视频 -->
             <div class="work-item">
                 <div class="video-container">
                     <iframe 
